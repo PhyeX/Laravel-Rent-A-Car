@@ -5,13 +5,13 @@
     <title> @yield("title") </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <
+
     @include("home._css")
     @yield("css")
     @yield("header_js")
 </head>
 
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<body>
 
 
 <div class="site-wrap" id="home-section">

@@ -25,3 +25,6 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+// Admin
+Route::get('/admin',[\App\Http\Controllers\Admin\HomeController::class,'index'])->name("adminhome");
