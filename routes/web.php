@@ -27,4 +27,22 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 // Admin
-Route::get('/admin',[\App\Http\Controllers\Admin\HomeController::class,'index'])->name("adminhome");
+
+Route::middleware('auth')->prefix('admin')->group( function () {
+
+    Route::get('/',[\App\Http\Controllers\Admin\HomeController::class,'index'])->name('admin_home');
+    Route::get('category',[\App\Http\Controllers\Admin\CategoryController::class,'index'])->name('admin_category');
+    Route::get('category/add',[\App\Http\Controllers\Admin\CategoryController::class,'index'])->name('admin_category_add');
+    Route::get('category/update',[\App\Http\Controllers\Admin\CategoryController::class,'index'])->name('admin_category_update');
+    Route::get('category/delete',[\App\Http\Controllers\Admin\CategoryController::class,'index'])->name('admin_category_delete');
+    Route::get('category/show',[\App\Http\Controllers\Admin\CategoryController::class,'index'])->name('admin_category_show');
+
+
+});
+
+
+
+//Route::get('/admin',[\App\Http\Controllers\Admin\HomeController::class,'index'])->name("admin_home")->middleware("auth");
+Route::get('/admin/login',[\App\Http\Controllers\Admin\HomeController::class,'login'])->name("admin_login");
+Route::post('/admin/login/check',[\App\Http\Controllers\Admin\HomeController::class,'login_check'])->name("admin_login_check");
+Route::post('/admin/logout',[\App\Http\Controllers\Admin\HomeController::class,'logout'])->name("admin_logout");

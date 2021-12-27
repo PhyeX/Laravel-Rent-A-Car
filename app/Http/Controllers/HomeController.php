@@ -10,4 +10,5 @@ class HomeController extends Controller
 
         return view("home.index",['sa'=>"Salemün Alyküm"]);
     }
+
 }
