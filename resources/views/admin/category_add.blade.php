@@ -1,3 +1,8 @@
+@extends("layouts.admin")
+
+@section("title","Category Page")
+
+@section("admincontent")
 <!-- [ Main Content ] start -->
 <div class="pcoded-main-container">
     <div class="pcoded-content">
@@ -7,11 +12,11 @@
                 <div class="row align-items-center">
                     <div class="col-md-12">
                         <div class="page-header-title">
-                            <h5 class="m-b-10">Sample Page</h5>
+                            <h5 class="m-b-10">Add Category</h5>
                         </div>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route("admin_home") }}"><i class="feather icon-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#!">Sample Page</a></li>
+                            <li class="breadcrumb-item"><a href="#!">Add Category</a></li>
                         </ul>
                     </div>
                 </div>
@@ -25,7 +30,7 @@
                 <div class="card">
 
                     <div class="card-header">
-                        <h5>Hello card</h5>
+                        <h5>Add Category</h5>
                         <div class="card-header-right">
                             <div class="btn-group card-option">
                                 <button type="button" class="btn dropdown-toggle btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -41,10 +46,49 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                            officia deserunt mollit anim id est laborum."
-                        </p>
+
+                        <form action = "{{route('admin_category_create')}}" method="post">
+                            @csrf
+                            <label>Parent</label>
+                            <select class="form-control" name ="parent_id" id="exampleFormControlSelect1">
+                                <option value = "0">Main Category</option>
+                                @foreach( $datalist as $rs )
+                                    <option value="{{ $rs -> id }}">{{ $rs -> title }}</option>
+                                @endforeach
+                            </select>
+                            <br>
+
+                            <label>Title</label>
+                            <input type="text" name="title" class="form-control" id="inputPassword4">
+                            <br>
+
+                            <label>Keywords</label>
+                            <input type="text" name="keywords" class="form-control" id="inputEmail4">
+                            <br>
+
+                            <label>Slug</label>
+                            <input type="text" name="slug" class="form-control" id="inputEmail4">
+                            <br>
+
+                            <label>Description</label>
+                            <input type="text" name="description" class="form-control" id="inputEmail4">
+                            <br>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Status</label>
+                                <select class="form-control" name ="status" id="exampleFormControlSelect1">
+                                    <option>False</option>
+                                    <option>True</option>
+                                </select>
+                            </div>
+
+
+
+
+
+                            <button style=" margin: auto ; text-align: center; " type="submit" class="btn  btn-primary">Add Category</button>
+
+                        </form>
                     </div>
                 </div>
             </div>
@@ -54,3 +98,4 @@
     </div>
 </div>
 <!-- [ Main Content ] end -->
+@endsection

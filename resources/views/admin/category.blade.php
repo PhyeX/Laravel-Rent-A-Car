@@ -27,30 +27,12 @@
             <div class="row">
                 <!-- [ sample-page ] start -->
                 <div class="col-sm-12">
+
                     <div class="card">
+                           <div class="card-header">
 
-                        <div class="card-header">
-                            <h5>Hello card</h5>
-                            <div class="card-header-right">
-                                <div class="btn-group card-option">
-                                    <button type="button" class="btn dropdown-toggle btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="feather icon-more-horizontal"></i>
-                                    </button>
-                                    <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
-                                        <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
-                                        <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
-                                        <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
-                                        <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header">
-                                <h5>Hover Table</h5>
-                                <span class="d-block m-t-5">use class <code>table-hover</code> inside table element</span>
-                            </div>
+                               <a href="{{ route('admin_category_add') }}" > <button  type="button" class="btn btn-info">Add Category</button> </a>
+                           </div>
                             <div class="card-body table-border-style">
                                 <div class="table-responsive">
                                     <table class="table table-hover">
@@ -72,7 +54,7 @@
                                             <td>{{ $rs -> title }}</td>
                                             <td>{{ $rs -> status }}</td>
                                             <td> Edit </td>
-                                            <td> Delete </td>
+                                            <td> <a href =" {{ route('admin_category_delete',['id' => $rs->id ]) }}" onclick="return confirm('Delete ! Are you sure?')">Delete </a></td>
                                         </tr>
                                         @endforeach
                                         </tbody>
@@ -87,7 +69,7 @@
             </div>
             <!-- [ Main Content ] end -->
         </div>
-    </div>
+
     <!-- [ Main Content ] end -->
 @endsection
 
