@@ -1,6 +1,6 @@
 @extends("layouts.admin")
 
-@section("title","Category Page")
+@section("title","Add Category Page")
 
 @section("admincontent")
 <!-- [ Main Content ] start -->
