@@ -22,6 +22,7 @@
     <!-- vendor css -->
     <link rel="stylesheet" href="{{asset("assets/admin")}}/assets/css/style.css">
 
+
     @yield("css")
     @yield("javascript")
 
