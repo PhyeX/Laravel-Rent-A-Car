@@ -39,6 +39,24 @@ Route::middleware('auth')->prefix('admin')->group( function () {
     Route::get('category/delete/{id}',[\App\Http\Controllers\Admin\CategoryController::class,'destroy'])->name('admin_category_delete');
     Route::get('category/show',[\App\Http\Controllers\Admin\CategoryController::class,'show'])->name('admin_category_show');
 
+    #Car
+    Route::prefix('car')->group( function() {
+        Route::get('/',[\App\Http\Controllers\Admin\CarController::class,'index'])->name('admin_car');
+        Route::get('create',[\App\Http\Controllers\Admin\CarController::class,'create'])->name('admin_car_create');
+        Route::post('store',[\App\Http\Controllers\Admin\CarController::class,'store'])->name('admin_car_store');
+        Route::post('update/{id}',[\App\Http\Controllers\Admin\CarController::class,'update'])->name('admin_car_update');
+        Route::get('edit/{id}',[\App\Http\Controllers\Admin\CarController::class,'edit'])->name('admin_car_edit');
+        Route::get('delete/{id}',[\App\Http\Controllers\Admin\CarController::class,'destroy'])->name('admin_car_delete');
+        Route::get('show',[\App\Http\Controllers\Admin\CarController::class,'show'])->name('admin_car_show');
+    });
+
+    #Product Image Gallery
+    Route::prefix('image')->group( function() {
+        Route::get('create/{car_id}',[\App\Http\Controllers\Admin\ImageController::class,'create'])->name('admin_image_add');
+        Route::post('store/{car_id}',[\App\Http\Controllers\Admin\ImageController::class,'store'])->name('admin_image_store');
+        Route::get('delete/{id}',[\App\Http\Controllers\Admin\ImageController::class,'destroy'])->name('admin_image_delete');
+        Route::get('show',[\App\Http\Controllers\Admin\ImageController::class,'show'])->name('admin_image_show');
+    });
 
 });
 

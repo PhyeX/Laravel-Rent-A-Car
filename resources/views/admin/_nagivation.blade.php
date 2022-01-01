@@ -25,11 +25,15 @@
                     <label>Navigation</label>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route("admin_home") }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+                    <a href="{{ route("admin_home") }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Home</span></a>
                 </li>
 
                 <li class="nav-item">
                     <a href="{{ route("admin_category") }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Category</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route("admin_car") }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Cars</span></a>
                 </li>
 
 
