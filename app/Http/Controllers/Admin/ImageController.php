@@ -7,6 +7,7 @@ use App\Models\Car;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -36,7 +37,7 @@ class ImageController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request , $car_id )
     {
@@ -86,10 +87,12 @@ class ImageController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Image  $image
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Image $image)
+    public function destroy(Image $image,$car_id)
     {
-        //
+        $data = Image::find($car_id);
+        $data->delete();
+        return redirect()->route('admin_image_add',[ 'car_id' => $car_id] );
     }
 }

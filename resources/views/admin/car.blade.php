@@ -72,7 +72,7 @@
                                                     <img src="{{ \Illuminate\Support\Facades\Storage::url($rs->image)}}" height="30" alt="">
                                                 @endif
                                             </td>
-                                            <td><a href="{{route('admin_image_add',['car_id' => $rs->id ])}}">Image Gallery</td>
+                                            <td><a href="{{route('admin_image_add',['car_id' => $rs->id ])}}" onclick="return !window.open(this.href ,'','top=50 left=100 width=1100,height=700')">Image Gallery</a></td>
                                             <td>{{ $rs -> age }}</td>
                                             <td>{{ $rs -> doors }}</td>
                                             <td>{{ $rs -> seats }}</td>

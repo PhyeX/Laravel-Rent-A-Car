@@ -1,18 +1,30 @@
-@extends("layouts.admin")
 
-@section("title","Add Images Gallery")
+ <html>
 
-@section("javascript")
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+ <head>
+     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+     <!--[if lt IE 11]>
+     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+     <![endif]-->
+     <!-- Meta -->
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="description" content="" />
+     <meta name="keywords" content="">
+     <meta name="author" content="Phoenixcoded" />
+     <!-- Favicon icon -->
+     <link rel="icon" href="{{asset("assets/admin")}}/assets/images/favicon.ico" type="image/x-icon">
 
-@endsection
-
-@section("admincontent")
+     <!-- vendor css -->
+     <link rel="stylesheet" href="{{asset("assets/admin")}}/assets/css/style.css">
+ </head>
 <!-- [ Main Content ] start -->
-<div class="pcoded-main-container">
+
     <div class="pcoded-content">
         <!-- [ breadcrumb ] start -->
         <div class="page-header">
@@ -53,33 +65,6 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Title</th>
-                            <th>Image</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach( $images as $rs )
-                            <tr>
-                                <td>{{ $rs -> id }}</td>
-                                <td>{{ $rs -> title }}</td>
-
-                                <td>
-                                    @if ( $rs -> image )
-                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($rs->image)}}" height="60" alt="">
-                                    @endif
-                                </td>
-
-                                <td> <a href ="{{ route('admin_image_delete',['id' => $rs->id ]) }}" onclick="return confirm('Delete ! Are you sure?')"> Delete </a></td>
-
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
                     <div class="card-body">
 
                         <form action = "{{route('admin_image_store',['car_id'=>$data->id])}}" method="post" enctype="multipart/form-data">
@@ -101,9 +86,45 @@
                 </div>
             </div>
             <!-- [ sample-page ] end -->
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach( $images as $rs )
+                    <tr>
+                        <td>{{ $rs -> id }}</td>
+                        <td>{{ $rs -> title }}</td>
+
+                        <td>
+                            @if ( $rs -> image )
+                                <img src="{{ \Illuminate\Support\Facades\Storage::url($rs->image)}}" height="60" alt="">
+                            @endif
+                        </td>
+
+                        <td> <a href ="{{ route('admin_image_delete',['id' => $rs->id ,'product_id' => $data -> id ] ) }}" onclick="return confirm('Delete ! Are you sure?')"> Delete </a></td>
+
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
-        <!-- [ Main Content ] end -->
-    </div>
+
 </div>
 <!-- [ Main Content ] end -->
-@endsection
+ <script src="{{ asset("assets/admin") }}/assets/js/vendor-all.min.js"></script>
+ <script src="{{ asset("assets/admin") }}/assets/js/plugins/bootstrap.min.js"></script>
+ <script src="{{ asset("assets/admin") }}/assets/js/pcoded.min.js"></script>
+
+ <!-- Apex Chart -->
+ <script src="{{ asset("assets/admin") }}/assets/js/plugins/apexcharts.min.js"></script>
+
+
+ <!-- custom-chart js -->
+ <script src="{{ asset("assets/admin") }}/assets/js/pages/dashboard-main.js"></script>
+ </html>
