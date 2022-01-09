@@ -84,7 +84,7 @@
                             <br>
 
                             <label>Image</label>
-                            <input type="text" name="image" value="{{ $data  -> image }}"  class="form-control" id="inputEmail4">
+                            <input type="file" name="image" value="{{ $data  -> image }}"  class="form-control" id="inputEmail4">
                             <br>
 
                             <label>Age</label>

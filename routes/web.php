@@ -50,7 +50,7 @@ Route::middleware('auth')->prefix('admin')->group( function () {
         Route::get('show',[\App\Http\Controllers\Admin\CarController::class,'show'])->name('admin_car_show');
     });
 
-    #Product Image Gallery
+    #Car Image Gallery
     Route::prefix('image')->group( function() {
         Route::get('create/{car_id}',[\App\Http\Controllers\Admin\ImageController::class,'create'])->name('admin_image_add');
         Route::post('store/{car_id}',[\App\Http\Controllers\Admin\ImageController::class,'store'])->name('admin_image_store');
@@ -58,6 +58,9 @@ Route::middleware('auth')->prefix('admin')->group( function () {
         Route::get('show',[\App\Http\Controllers\Admin\ImageController::class,'show'])->name('admin_image_show');
     });
 
+    # Setting
+    Route::get('setting',[\App\Http\Controllers\Admin\SettingController::class,'index'])->name('admin_setting');
+    Route::get('setting/update',[\App\Http\Controllers\Admin\SettingController::class,'update'])->name('admin_setting_update');
 });
 
 
