@@ -15,9 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+// Home
+Route::get("/home",[HomeController::class, 'index'])->name('home_index');
+Route::get("/services",[HomeController::class, 'index'])->name('home_services');
+Route::get("/cars",[HomeController::class, 'index'])->name('home_cars');
+Route::get("/about",[HomeController::class, 'index'])->name('home_about');
+Route::get("/blog",[HomeController::class, 'index'])->name('home_blog');
+Route::get("/contact",[HomeController::class, 'index'])->name('home_contact');
 
-Route::get("/home",[HomeController::class, 'index']);
 
+Route::get("/account",[HomeController::class, 'index'])->name('home_myAccount');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -68,4 +75,4 @@ Route::middleware('auth')->prefix('admin')->group( function () {
 //Route::get('/admin',[\App\Http\Controllers\Admin\HomeController::class,'index'])->name("admin_home")->middleware("auth");
 Route::get('/admin/login',[\App\Http\Controllers\Admin\HomeController::class,'login'])->name("admin_login");
 Route::post('/admin/login/check',[\App\Http\Controllers\Admin\HomeController::class,'login_check'])->name("admin_login_check");
-Route::post('/admin/logout',[\App\Http\Controllers\Admin\HomeController::class,'logout'])->name("admin_logout");
+Route::get('/logout',[\App\Http\Controllers\Admin\HomeController::class,'logout'])->name("logout");

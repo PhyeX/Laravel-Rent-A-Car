@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+
+
+    public static function categorylist(){
+
+        return Category::where('parent_id','*',0)->with('children')->get();
+    }
+
     public function index()
     {
         return view("admin.index");
@@ -47,7 +54,7 @@ class HomeController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect("/");
+        return redirect("/home");
 
     }
 }

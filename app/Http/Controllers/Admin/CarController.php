@@ -11,11 +11,9 @@ use Illuminate\Support\Facades\DB;
 
 class CarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
+
+
+
     public function index()
     {
 
@@ -32,7 +30,7 @@ class CarController extends Controller
     public function create( Request $request )
     {
 
-        $datalist = Car::all();
+        $datalist = Category::with('children')->get();
 
         return view('admin.car_add',['datalist'=>$datalist]);
     }
@@ -86,7 +84,7 @@ class CarController extends Controller
     public function edit(Car $car,$id)
     {
         $data = Car::find($id);
-        $datalist = Category::all();
+        $datalist = Category::with('children')->get();
 
         return view('admin.car_edit',['data' => $data,'datalist' => $datalist ]);
     }
@@ -115,7 +113,9 @@ class CarController extends Controller
         $data -> description = $request->input('description');
         $data -> status = $request->input('status');
         $data -> detail = $request->input('detail');
-        $data -> image = \Illuminate\Support\Facades\Storage::putFile('images',$request->file('image'));
+        if( $request->file('image') != null ){
+            $data -> image = \Illuminate\Support\Facades\Storage::putFile('images',$request->file('image'));
+        }
         $data->save();
 
         return redirect()->route('admin_car');

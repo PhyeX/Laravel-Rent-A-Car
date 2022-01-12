@@ -1,3 +1,7 @@
+@php
+$setting = \App\Http\Controllers\HomeController::getSetting();
+@endphp
+
 <header class="site-navbar site-navbar-target" role="banner">
 
     <div class="container">
@@ -5,7 +9,7 @@
 
             <div class="col-3 ">
                 <div class="site-logo">
-                    <a href="index.html">CarRent</a>
+                    <a href="{{ route('home_index') }}">Car Rent</a>
                 </div>
             </div>
 
@@ -18,12 +22,24 @@
 
                 <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
                     <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                        <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                        <li><a href="services.html" class="nav-link">Services</a></li>
-                        <li><a href="cars.html" class="nav-link">Cars</a></li>
-                        <li><a href="about.html" class="nav-link">About</a></li>
-                        <li><a href="blog.html" class="nav-link">Blog</a></li>
-                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+
+                        @if (Auth::check())
+                            <li><a href="/user/profile" class="nav-link">My Account</a></li>
+                        @else
+                            <li><a href="/login" class="nav-link">Sign-in</a></li>
+                            <li><a href="/register" class="nav-link">Sign-up</a></li>
+                        @endif
+
+                        <li class="active"><a href="{{ route('home_index') }}" class="nav-link">Home</a></li>
+                        <li><a href="{{ route('home_services') }}" class="nav-link">Services</a></li>
+                        <li><a href="{{ route('home_cars') }}" class="nav-link">Cars</a></li>
+                        <li><a href="{{ route('home_about') }}" class="nav-link">About</a></li>
+                        <li><a href="{{ route('home_blog') }}" class="nav-link">Blog</a></li>
+                        <li><a href="{{ route('home_contact') }}" class="nav-link">Contact</a></li>
+
+                        @if (Auth::check())
+                                <li><a href="{{ route('logout') }}" class="nav-link">Log Out</a></li>
+                        @endif
                     </ul>
                 </nav>
             </div>
