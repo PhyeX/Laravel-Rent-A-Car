@@ -170,12 +170,6 @@
                                             <br>
                                         </div>
 
-                                        <div class="tab-pane fade" id="abouttab" role="tabpanel" aria-labelledby="contact-tab">
-                                            <label>About</label>
-                                            <textarea id="about" type="text"  class="form-control" name="about"></textarea>
-                                            <br>
-                                        </div>
-
                                         <div class="tab-pane fade" id="blogtab" role="tabpanel" aria-labelledby="contact-tab">
                                             <label>Blog</label>
                                             <textarea id="blog" type="text"  class="form-control" name="blog"></textarea>
@@ -188,9 +182,9 @@
                                             <br>
                                         </div>
 
-                                        <div class="tab-pane fade" id="referencetab" role="tabpanel" aria-labelledby="contact-tab">
+                                        <div class="tab-pane fade" id="referencestab" role="tabpanel" aria-labelledby="contact-tab">
                                             <label>References</label>
-                                            <textarea id="referencestab" type="text"  class="form-control" name="contact"></textarea>
+                                            <textarea id="references" type="text"  class="form-control" name="references"></textarea>
                                             <br>
                                         </div>
 
@@ -208,22 +202,9 @@
 
 
                             <script>
-                                $('#summernote').summernote({
-                                    placeholder: '{{ $data  -> references }}',
-                                    tabsize: 2,
-                                    height: 120,
-                                    toolbar: [
-                                        ['style', ['style']],
-                                        ['font', ['bold', 'underline', 'clear']],
-                                        ['color', ['color']],
-                                        ['para', ['ul', 'ol', 'paragraph']],
-                                        ['table', ['table']],
-                                        ['insert', ['link', 'picture', 'video']],
-                                        ['view', ['fullscreen', 'codeview', 'help']]
-                                    ]
-                                });
+
                                 $('#contact').summernote({
-                                    placeholder: '{{ $data  -> contact }}',
+                                    placeholder: '{!! $data  -> contact !!}',
                                     tabsize: 2,
                                     height: 120,
                                     toolbar: [
@@ -237,7 +218,7 @@
                                     ]
                                 });
                                 $('#blog').summernote({
-                                    placeholder: '{{ $data  -> blog }}',
+                                    placeholder: '{!! $data  -> blog !!}',
                                     tabsize: 2,
                                     height: 120,
                                     toolbar: [
@@ -251,7 +232,7 @@
                                     ]
                                 });
                                 $('#services').summernote({
-                                    placeholder: '{{ $data  -> services }}',
+                                    placeholder: '{!! $data  -> services !!}',
                                     tabsize: 2,
                                     height: 120,
                                     toolbar: [
@@ -265,7 +246,7 @@
                                     ]
                                 });
                                 $('#about').summernote({
-                                    placeholder: '{{ $data  -> about }}',
+                                    placeholder: '{!!  $data  -> about  !!}',
                                     tabsize: 2,
                                     height: 120,
                                     toolbar: [
@@ -278,6 +259,21 @@
                                         ['view', ['fullscreen', 'codeview', 'help']]
                                     ]
                                 });
+                                $('#references').summernote({
+                                    placeholder: '{!! $data  -> references !!}',
+                                    tabsize: 2,
+                                    height: 120,
+                                    toolbar: [
+                                        ['style', ['style']],
+                                        ['font', ['bold', 'underline', 'clear']],
+                                        ['color', ['color']],
+                                        ['para', ['ul', 'ol', 'paragraph']],
+                                        ['table', ['table']],
+                                        ['insert', ['link', 'picture', 'video']],
+                                        ['view', ['fullscreen', 'codeview', 'help']]
+                                    ]
+                                });
+
 
                             </script>
 

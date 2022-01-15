@@ -19,10 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get("/home",[HomeController::class, 'index'])->name('home_index');
 Route::get("/services",[HomeController::class, 'index'])->name('home_services');
 Route::get("/cars",[HomeController::class, 'index'])->name('home_cars');
-Route::get("/about",[HomeController::class, 'index'])->name('home_about');
+Route::get("/about",[HomeController::class, 'about'])->name('home_about');
 Route::get("/blog",[HomeController::class, 'index'])->name('home_blog');
-Route::get("/contact",[HomeController::class, 'index'])->name('home_contact');
-
+Route::get("/contact",[HomeController::class, 'contact'])->name('home_contact');
+Route::post("/contact",[HomeController::class, 'sendmessage'])->name('home_sendmessage');
+Route::get("/references",[HomeController::class, 'references'])->name('home_references');
 
 Route::get("/account",[HomeController::class, 'index'])->name('home_myAccount');
 Route::get('/', function () {
@@ -55,6 +56,15 @@ Route::middleware('auth')->prefix('admin')->group( function () {
         Route::get('edit/{id}',[\App\Http\Controllers\Admin\CarController::class,'edit'])->name('admin_car_edit');
         Route::get('delete/{id}',[\App\Http\Controllers\Admin\CarController::class,'destroy'])->name('admin_car_delete');
         Route::get('show',[\App\Http\Controllers\Admin\CarController::class,'show'])->name('admin_car_show');
+    });
+
+    #Message
+    Route::prefix('messages')->group( function() {
+        Route::get('/',[\App\Http\Controllers\Admin\MessageController::class,'index'])->name('admin_message');
+        Route::post('update/{id}',[\App\Http\Controllers\Admin\MessageController::class,'update'])->name('admin_message_update');
+        Route::get('edit/{id}',[\App\Http\Controllers\Admin\MessageController::class,'edit'])->name('admin_message_edit');
+        Route::get('delete/{id}',[\App\Http\Controllers\Admin\MessageController::class,'destroy'])->name('admin_message_delete');
+        Route::get('show',[\App\Http\Controllers\Admin\MessageController::class,'show'])->name('admin_message_show');
     });
 
     #Car Image Gallery

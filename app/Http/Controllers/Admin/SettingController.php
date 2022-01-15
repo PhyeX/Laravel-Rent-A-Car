@@ -99,12 +99,19 @@ class SettingController extends Controller
         $data -> instagram = $request->input('instagram');
         $data -> twitter = $request->input('twitter');
         $data -> youtube = $request->input('youtube');
+        if( $request->input('about') != null )
         $data -> about = $request->input('about');
+        if( $request->input('services') != null )
         $data -> services = $request->input('services');
+        if( $request->input('blog') != null )
         $data -> blog = $request->input('blog');
+        if( $request->input('contact') != null )
         $data -> contact = $request->input('contact');
+        if( $request->input('cars') != null )
         $data -> cars = $request->input('cars');
+        if( $request->input('references') != null )
         $data -> references = $request->input('references');
+        if( $request->input('status') != null )
         $data -> status = $request->input('status');
         $data->save();
         return redirect()->route('admin_setting');

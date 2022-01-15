@@ -31,12 +31,12 @@ class CreateSettingsTable extends Migration
             $table->string('instagram')->nullable();
             $table->string('twitter')->nullable();
             $table->string('youtube')->nullable();
-            $table->string('about')->nullable();
-            $table->string('services')->nullable();
-            $table->string('blog')->nullable();
-            $table->string('contact')->nullable();
-            $table->string('cars')->nullable();
-            $table->string('references')->nullable();
+            $table->longText('about')->nullable();
+            $table->longText('services')->nullable();
+            $table->longText('blog')->nullable();
+            $table->longText('contact')->nullable();
+            $table->longText('cars')->nullable();
+            $table->longText('references')->nullable();
             $table->string('status')->nullable()->default('False');
             $table->timestamps();
         });

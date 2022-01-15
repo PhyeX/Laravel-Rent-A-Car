@@ -36,7 +36,7 @@ $setting = \App\Http\Controllers\HomeController::getSetting();
                         <li><a href="{{ route('home_about') }}" class="nav-link">About</a></li>
                         <li><a href="{{ route('home_blog') }}" class="nav-link">Blog</a></li>
                         <li><a href="{{ route('home_contact') }}" class="nav-link">Contact</a></li>
-
+                        <li><a href="{{ route('home_references') }}" class="nav-link">References</a></li>
                         @if (Auth::check())
                                 <li><a href="{{ route('logout') }}" class="nav-link">Log Out</a></li>
                         @endif

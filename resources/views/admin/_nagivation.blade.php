@@ -15,7 +15,7 @@
                     <ul class="list-unstyled">
                         <li class="list-group-item"><a href="user-profile.html"><i class="feather icon-user m-r-5"></i>View Profile</a></li>
                         <li class="list-group-item"><a href="#!"><i class="feather icon-settings m-r-5"></i>Settings</a></li>
-                        <li class="list-group-item"><a href="{{ route('admin_logout') }}"><i class="feather icon-log-out m-r-5"></i>Logout</a></li>
+                        <li class="list-group-item"><a href="{{ route('logout') }}"><i class="feather icon-log-out m-r-5"></i>Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -26,6 +26,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route("admin_home") }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Home</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route("admin_message") }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Contact Messages</span></a>
                 </li>
 
                 <li class="nav-item">
