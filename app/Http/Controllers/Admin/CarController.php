@@ -58,7 +58,7 @@ class CarController extends Controller
         $data -> description = $request->input('description');
         $data -> status = $request->input('status');
         $data -> detail = $request->input('detail');
-
+        $data -> slug = $request->input('slug');
         $data -> image = \Illuminate\Support\Facades\Storage::putFile('images',$request->file('image'));
         $data->save();
         return redirect()->route('admin_car');
@@ -113,6 +113,7 @@ class CarController extends Controller
         $data -> description = $request->input('description');
         $data -> status = $request->input('status');
         $data -> detail = $request->input('detail');
+        $data -> slug = $request->input('slug');
         if( $request->file('image') != null ){
             $data -> image = \Illuminate\Support\Facades\Storage::putFile('images',$request->file('image'));
         }

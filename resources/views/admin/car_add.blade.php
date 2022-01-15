@@ -102,7 +102,7 @@
                             <input type="number" name="seat" class="form-control" id="inputEmail4">
                             <br>
 
-                            <label>Doors</label>
+                            <label>Lugage</label>
                             <input type="text" name="lugage" class="form-control" id="inputEmail4">
                             <br>
 

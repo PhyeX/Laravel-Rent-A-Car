@@ -17,15 +17,21 @@ class HomeController extends Controller
 
     public function index(){
         $setting = Setting::first();
-
-        return view('home.index',[ 'setting' => $setting ,'slide']);
+        $slider = Car::where('status', '=', "False")->limit(4)->get();
+        return view('home.index',[ 'setting' => $setting ,'slider' => $slider ]);
     }
     public function service(){
 
         return view('home.index');
     }
-    public function cars(){
+    public function car($id,$slug){
+
         return view('home.index');
+    }
+    public function cars(){
+        $cars = Car::all();
+        $setting = Setting::first();
+        return view('home.cars',[ 'cars' => $cars ,'setting' => $setting ]);
     }
     public function about(){
         $setting = Setting::first();

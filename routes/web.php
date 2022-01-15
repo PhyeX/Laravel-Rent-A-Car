@@ -18,13 +18,13 @@ use Illuminate\Support\Facades\Route;
 // Home
 Route::get("/home",[HomeController::class, 'index'])->name('home_index');
 Route::get("/services",[HomeController::class, 'index'])->name('home_services');
-Route::get("/cars",[HomeController::class, 'index'])->name('home_cars');
+Route::get("/cars",[HomeController::class, 'cars'])->name('home_cars');
 Route::get("/about",[HomeController::class, 'about'])->name('home_about');
 Route::get("/blog",[HomeController::class, 'index'])->name('home_blog');
 Route::get("/contact",[HomeController::class, 'contact'])->name('home_contact');
 Route::post("/contact",[HomeController::class, 'sendmessage'])->name('home_sendmessage');
 Route::get("/references",[HomeController::class, 'references'])->name('home_references');
-
+Route::get("/car/{id}/{slug}",[HomeController::class, 'car'])->name('car');
 Route::get("/account",[HomeController::class, 'index'])->name('home_myAccount');
 Route::get('/', function () {
     return view('welcome');
