@@ -24,9 +24,11 @@ class HomeController extends Controller
 
         return view('home.index');
     }
-    public function car($id,$slug){
+    public function car($id){
 
-        return view('home.index');
+        $car = Car::find($id);
+        $setting = Setting::first();
+        return view('home.carDetail',[ 'car' => $car , 'setting' => $setting]);
     }
     public function cars(){
         $cars = Car::all();

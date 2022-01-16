@@ -24,7 +24,7 @@ Route::get("/blog",[HomeController::class, 'index'])->name('home_blog');
 Route::get("/contact",[HomeController::class, 'contact'])->name('home_contact');
 Route::post("/contact",[HomeController::class, 'sendmessage'])->name('home_sendmessage');
 Route::get("/references",[HomeController::class, 'references'])->name('home_references');
-Route::get("/car/{id}/{slug}",[HomeController::class, 'car'])->name('car');
+Route::get("/car/detail/{id}",[HomeController::class, 'car'])->name('home_carDetail');
 Route::get("/account",[HomeController::class, 'index'])->name('home_myAccount');
 Route::get('/', function () {
     return view('welcome');

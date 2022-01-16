@@ -66,7 +66,7 @@
                                 </li>
                             </ul>
                             <div class="d-flex action">
-                                <a href="contact.html" class="btn btn-primary">Rent Now</a>
+                                <a href="{{route('home_carDetail',['id'=>$car->id])}}" class="btn btn-primary">Rent Now</a>
                             </div>
                         </div>
                     </div>

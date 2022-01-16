@@ -51,7 +51,7 @@
                                 </li>
                             </ul>
                             <div class="d-flex action">
-                                <a href="{{route('car',['slug'=>$rs->id,'id'=>$rs->id])}}" class="btn btn-primary">Rent Now</a>
+                                <a href="{{route('home_carDetail',['slug'=>$rs->id,'id'=>$rs->id])}}" class="btn btn-primary">Rent Now</a>
                             </div>
                         </div>
 

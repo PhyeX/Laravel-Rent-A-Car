@@ -99,7 +99,7 @@
                             <input type="number" name="seat" value="{{ $data  -> seats }}" class="form-control" id="inputEmail4">
                             <br>
 
-                            <label>Doors</label>
+                            <label>Lugage</label>
                             <input type="text" name="lugage" value="{{ $data  -> doors }}"  class="form-control" id="inputEmail4">
                             <br>
 
