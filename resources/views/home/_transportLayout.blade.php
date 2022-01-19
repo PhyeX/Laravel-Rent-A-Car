@@ -12,24 +12,7 @@
                             <span class="text-primary">32</span> <span>cars available</span></span>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group col-md-3">
-                            <label for="cf-1">Where you from</label>
-                            <input type="text" id="cf-1" placeholder="Your pickup address" class="form-control">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="cf-2">Where you go</label>
-                            <input type="text" id="cf-2" placeholder="Your drop-off address" class="form-control">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="cf-3">Journey date</label>
-                            <input type="text" id="cf-3" placeholder="Your pickup address" class="form-control datepicker px-3">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="cf-4">Return date</label>
-                            <input type="text" id="cf-4" placeholder="Your pickup address" class="form-control datepicker px-3">
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="col-lg-6">
                             <input type="submit" value="Submit" class="btn btn-primary">

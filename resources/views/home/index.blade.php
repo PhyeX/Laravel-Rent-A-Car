@@ -11,7 +11,7 @@
 @section("content")
     @include("home._header")
     @include("home._selection")
-    @include("home._transportLayout")
+
     @include("home._slider")
     @include("home._services")
     @include("home._customerTestimony")

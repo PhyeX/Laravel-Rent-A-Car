@@ -43,6 +43,10 @@
                     <a href="{{ route("admin_car") }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Cars</span></a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route("admin_reservation") }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Reservations</span></a>
+                </li>
+
 
             </ul>
         </div>

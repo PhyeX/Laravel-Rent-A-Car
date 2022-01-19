@@ -33,7 +33,7 @@ class HomeController extends Controller
             if( Auth::attempt($credentials) ){
                 $request->session()->regenerate();
 
-                return redirect()->intended('admin');
+                return view('admin.index');
             }
 
             return back()->withErrors ([

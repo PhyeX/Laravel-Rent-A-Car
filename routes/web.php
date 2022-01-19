@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// User
+Route::middleware('auth')->prefix('user')->group( function () {
+
+    Route::get("/reservations",[UserController::class, 'reservation'])->name('user_reservations');
+    Route::get("/messages",[UserController::class, 'messages'])->name('user_messages');
+
+});
+
+Route::get("/car/reservation/{carId}",[UserController::class, 'reserveCar'])->name('user_reserve_car')->middleware('auth');
+
 
 // Home
 Route::get("/home",[HomeController::class, 'index'])->name('home_index');
@@ -25,7 +36,8 @@ Route::get("/contact",[HomeController::class, 'contact'])->name('home_contact');
 Route::post("/contact",[HomeController::class, 'sendmessage'])->name('home_sendmessage');
 Route::get("/references",[HomeController::class, 'references'])->name('home_references');
 Route::get("/car/detail/{id}",[HomeController::class, 'car'])->name('home_carDetail');
-Route::get("/account",[HomeController::class, 'index'])->name('home_myAccount');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -37,7 +49,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // Admin
 
 Route::middleware('auth')->prefix('admin')->group( function () {
-
+    Route::middleware('admin')->group( function() {
     Route::get('/',[\App\Http\Controllers\Admin\HomeController::class,'index'])->name('admin_home');
     Route::get('category',[\App\Http\Controllers\Admin\CategoryController::class,'index'])->name('admin_category');
     Route::get('category/add',[\App\Http\Controllers\Admin\CategoryController::class,'add'])->name('admin_category_add');
@@ -78,6 +90,16 @@ Route::middleware('auth')->prefix('admin')->group( function () {
     # Setting
     Route::get('setting',[\App\Http\Controllers\Admin\SettingController::class,'index'])->name('admin_setting');
     Route::get('setting/update',[\App\Http\Controllers\Admin\SettingController::class,'update'])->name('admin_setting_update');
+
+    # Reservations
+    Route::prefix('reservations')->group( function() {
+        Route::get('/', [\App\Http\Controllers\Admin\ReservationController::class, 'index'])->name('admin_reservation');
+        Route::get('edit/{id}', [\App\Http\Controllers\Admin\ReservationController::class, 'edit'])->name('admin_reservation_edit');
+        Route::get('accept/{id}', [\App\Http\Controllers\Admin\ReservationController::class, 'accept'])->name('admin_reservation_accept');
+        Route::get('confirm/{id}', [\App\Http\Controllers\Admin\ReservationController::class, 'confirm'])->name('admin_reservation_confirm');
+        Route::get('reject/{id}', [\App\Http\Controllers\Admin\ReservationController::class, 'reject'])->name('admin_reservation_reject');
+    });
+    });
 });
 
 
