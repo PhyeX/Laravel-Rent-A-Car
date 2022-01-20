@@ -5,7 +5,13 @@
 
             <div class="">
                 <div class="main-menu-header">
-                    <img class="img-radius" src="{{ asset("assets/admin") }}/assets/images/user/avatar-2.jpg" alt="User-Profile-Image">
+                    <img class="img-radius" src="
+                    @if(Auth::user()->profile_photo_path)
+                    {{ Storage::url(Auth::user()->profile_photo_path) }}
+                    @else
+                        {{ asset("assets/admin") }}/assets/images/user/avatar-2.jpg
+                    @endif
+                        " alt="User-Profile-Image">
                     <div class="user-details">
                         <span>{{ Auth::user()->name }}</span>
                         <div id="more-details">UX Designer<i class="fa fa-chevron-down m-l-5"></i></div>
@@ -45,6 +51,9 @@
 
                 <li class="nav-item">
                     <a href="{{ route("admin_reservation") }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Reservations</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route("admin_users") }}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layout"></i></span><span class="pcoded-mtext">Users</span></a>
                 </li>
 
 
