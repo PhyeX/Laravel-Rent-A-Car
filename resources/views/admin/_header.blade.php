@@ -164,7 +164,13 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-notification">
                         <div class="pro-head">
-                            <img src="{{ asset("assets/admin") }}/assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
+                            <img src="
+                    @if(Auth::user()->profile_photo_path)
+                            {{ Storage::url(Auth::user()->profile_photo_path) }}
+                            @else
+                            {{ asset("assets/admin") }}/assets/images/user/avatar-2.jpg
+                    @endif
+                                " class="img-radius" alt="User-Profile-Image">
                             <span>{{ Auth::user()->name }}</span>
                             <a href="{{ route("logout") }}" class="dud-logout" title="Logout">
                                 <i class="feather icon-log-out"></i>

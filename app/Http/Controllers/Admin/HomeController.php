@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,7 +33,10 @@ class HomeController extends Controller
             $credentials = $request -> only('email','password');
             if( Auth::attempt($credentials) ){
                 $request->session()->regenerate();
-
+                $userRoles = Auth::user()->roles->pluck('name');
+                if( !$userRoles->contains('admin') ){
+                    return view('admin.login')->with('error','You do not have permirssion');
+                }
                 return view('admin.index');
             }
 
@@ -40,9 +44,9 @@ class HomeController extends Controller
                 'email' => 'The provided credentials do not match our records.',
             ]);
         }
-        else{
+
             return view('admin.login');
-        }
+
 
     }
 

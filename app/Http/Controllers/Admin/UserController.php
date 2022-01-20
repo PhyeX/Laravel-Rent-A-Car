@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -71,9 +72,9 @@ class UserController extends Controller
     {
         $data = User::find($id);
         $data->name = $request->input('name');
-        $data->name = $request->input('email');
-        $data->name = $request->input('phone');
-        $data->name = $request->input('address');
+        $data->email = $request->input('email');
+        $data->phone = $request->input('phone');
+        $data->address = $request->input('address');
         if ( $request->file('image') != null ){
             $data->profile_photo_path = Storage::putFile('profile-photos',$request->file('image'));
         }

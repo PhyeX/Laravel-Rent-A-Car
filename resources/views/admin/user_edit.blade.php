@@ -62,12 +62,18 @@
                                 <input type="text" value="{{$data->phone}}" name="phone" class="form-control" id="inputEmail4">
                                 <br>
 
+                                <label>Address</label>
+                                <input type="text" value="{{$data->address}}" name="address" class="form-control" id="inputEmail4">
+                                <br>
+
+
                                 <div class="form-group">
                                     <label>Image</label>
-                                    <input type="text" value="{{$data->address}}" name="image" class="form-control" id="inputEmail4">
+                                    <input type="file"  name="image" class="form-control" id="inputEmail4">
                                     <br>
-                                    @if( $data -> profile_photo_path )
+                                    @if( $data -> profile_photo_path != null )
                                         <img src="{{ Storage::url( $data->profile_photo_path ) }}" height="200" style="border-radius: 10px" alt="">
+                                    @endif
                                 </div>
 
                                 <button style=" margin: auto ; text-align: center; " type="submit" class="btn  btn-primary">Update</button>
