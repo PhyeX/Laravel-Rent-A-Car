@@ -81,19 +81,19 @@ class ReservationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $reservation = Reservation::find($id);
+
+        return view('admin.reservation_edit',[ 'reservation' => $reservation ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+        $reservation = Reservation::find($id);
+        $reservation->note = $request->input('note');
+        $reservation->save();
+
+        return redirect()->route("admin_reservation");
     }
 
     /**

@@ -112,6 +112,7 @@ Route::middleware('auth')->prefix('admin')->group( function () {
     Route::prefix('reservations')->group( function() {
         Route::get('/', [\App\Http\Controllers\Admin\ReservationController::class, 'index'])->name('admin_reservation');
         Route::get('edit/{id}', [\App\Http\Controllers\Admin\ReservationController::class, 'edit'])->name('admin_reservation_edit');
+        Route::get('update/{id}', [\App\Http\Controllers\Admin\ReservationController::class, 'update'])->name('admin_reservation_update');
         Route::get('accept/{id}', [\App\Http\Controllers\Admin\ReservationController::class, 'accept'])->name('admin_reservation_accept');
         Route::get('confirm/{id}', [\App\Http\Controllers\Admin\ReservationController::class, 'confirm'])->name('admin_reservation_confirm');
         Route::get('reject/{id}', [\App\Http\Controllers\Admin\ReservationController::class, 'reject'])->name('admin_reservation_reject');
