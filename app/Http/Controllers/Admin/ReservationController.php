@@ -22,12 +22,15 @@ class ReservationController extends Controller
     public function accept($id){
         $reservation = Reservation::find($id);
         $reservation->status = "Accepted";
+        $reservation->price = 0;
+        Car::find($reservation->car_id)->status = "True";
         $reservation->save();
         return redirect()->route("admin_reservation");
     }
     public function confirm($id){
         $reservation = Reservation::find($id);
         $reservation->status = "Confirmed";
+        Car::find($reservation->car_id)->status = "False";
         $fdate =  explode("/",$reservation->rezdate);
         $tdate = explode("-",Carbon::now()->format('m-d-y'));
         $reservation->returndate = Carbon::now()->format('m-d-y');

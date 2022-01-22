@@ -39,6 +39,7 @@
                                     <thead>
                                     <tr>
                                         <th>Id</th>
+                                        <th>Car Image</th>
                                         <th>User Id</th>
                                         <th>Car Id</th>
                                         <th>Where you from</th>
@@ -62,6 +63,11 @@
                                     @foreach( $reservations as $reservation )
                                         <tr>
                                             <td>{{ $reservation -> id }}</td>
+                                            <td>
+                                                @if(\App\Models\Car::find($reservation->car_id)->image)
+                                                <img src=" {{ Storage::url(\App\Models\Car::find($reservation->car_id)->image) }}" height="40" alt="">
+                                                @endif
+                                            </td>
                                             <td>{{ $reservation -> user_id }}</td>
                                             <td>{{ $reservation -> car_id }}</td>
                                             <td>{{ $reservation -> where_you_from }}</td>

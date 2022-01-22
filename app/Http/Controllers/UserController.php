@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use App\Models\Message;
 use App\Models\Reservation;
 use Carbon\Carbon;
@@ -51,10 +52,9 @@ class UserController extends Controller
     public function reservation(){
 
         $id = Auth::user()->id;
-
         $reservations = Reservation::all()->where('user_id',"=",$id);
 
-        return view("profile.showReservations", [ 'reservations' => $reservations ]);
+        return view("profile.showReservations", [ 'reservations' => $reservations  ]);
     }
 
     /**

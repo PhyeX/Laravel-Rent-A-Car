@@ -8,12 +8,13 @@
                         {{ __('Reservations') }}
                     </h2>
                 </div>
-                <hr>
 
-                @if($reservations != null )
+                @if( !is_null($reservations) )
                     @foreach($reservations as $reservation )
 
-
+                        @if( $car = \App\Models\Car::find($reservation->car_id) )
+                            <img src="{{ Storage::url(\App\Models\Car::find($reservation->car_id)->image) }}" height="250" width="250" style="border-radius: 10px" alt="">
+                        @endif
 
                         <td><th>Where you from : {{ $reservation -> where_you_from }}</th></td>
                         <br>
@@ -33,15 +34,13 @@
 
                         <hr>
                     @endforeach
+                @else
+                    <h1>There is no reservations.</h1>
                 @endif
 
             </div>
         </div>
     </x-slot>
 
-    <div>
-        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-            <p>selamın aleyküm cabbar kun </p>
-        </div>
-    </div>
+
 </x-app-layout>
